@@ -2,91 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Special+Elite&family=Oswald:wght@400;700&display=swap');
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 85%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 85%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 85%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 70% 35%;
+    --primary-foreground: 0 0% 95%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 200 15% 12%;
+    --secondary-foreground: 200 10% 70%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 60% 25%;
+    --accent-foreground: 0 0% 90%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 80% 40%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 15%;
+    --input: 0 0% 12%;
+    --ring: 0 70% 35%;
 
-    --radius: 0.5rem;
+    --radius: 0.3rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Horror custom vars */
+    --blood: #8b0000;
+    --blood-bright: #cc0000;
+    --rust: #5a3a1a;
+    --hospital-green: #1a2e1a;
+    --fog: rgba(180, 180, 180, 0.04);
+    --flicker-speed: 3s;
   }
 }
 
@@ -97,5 +53,311 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Special Elite', cursive;
+    background-color: #0a0a0a;
+    overflow-x: hidden;
   }
+}
+
+/* Horror flicker animation */
+@keyframes flicker {
+  0%, 95%, 100% { opacity: 1; }
+  96% { opacity: 0.7; }
+  97% { opacity: 1; }
+  98% { opacity: 0.5; }
+  99% { opacity: 0.9; }
+}
+
+@keyframes bloodDrip {
+  0% { transform: translateY(-10px); opacity: 0; }
+  20% { opacity: 1; }
+  100% { transform: translateY(60px); opacity: 0; }
+}
+
+@keyframes pulse-red {
+  0%, 100% { box-shadow: 0 0 5px #8b0000; }
+  50% { box-shadow: 0 0 20px #cc0000, 0 0 40px #8b0000; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
+}
+
+@keyframes scanlines {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+@keyframes fog-drift {
+  0% { transform: translateX(-5%) translateY(0); opacity: 0.3; }
+  50% { opacity: 0.6; }
+  100% { transform: translateX(5%) translateY(-10px); opacity: 0.3; }
+}
+
+@keyframes glitch {
+  0%, 100% { clip-path: inset(0 0 100% 0); transform: translate(0); }
+  20% { clip-path: inset(20% 0 30% 0); transform: translate(-3px, 2px); }
+  40% { clip-path: inset(50% 0 10% 0); transform: translate(3px, -2px); }
+  60% { clip-path: inset(80% 0 5% 0); transform: translate(-2px, 1px); }
+  80% { clip-path: inset(10% 0 60% 0); transform: translate(2px, -1px); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14% { transform: scale(1.05); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.03); }
+  70% { transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes door-creak {
+  0% { transform: perspective(400px) rotateY(0deg); }
+  100% { transform: perspective(400px) rotateY(-45deg); }
+}
+
+.font-horror {
+  font-family: 'Creepster', cursive;
+}
+
+.font-typewriter {
+  font-family: 'Special Elite', cursive;
+}
+
+.flicker {
+  animation: flicker var(--flicker-speed) infinite;
+}
+
+.pulse-red {
+  animation: pulse-red 2s infinite;
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
+}
+
+.heartbeat {
+  animation: heartbeat 1.5s infinite;
+}
+
+.float-anim {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Scanlines overlay */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0, 0, 0, 0.15) 3px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Vignette */
+.vignette::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.85) 100%);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Blood text */
+.text-blood {
+  color: var(--blood-bright);
+  text-shadow: 0 0 10px var(--blood), 0 2px 4px rgba(0,0,0,0.8);
+}
+
+/* Horror button */
+.btn-horror {
+  background: linear-gradient(135deg, #1a0000, #2d0000);
+  border: 1px solid var(--blood);
+  color: #e0c0c0;
+  font-family: 'Special Elite', cursive;
+  letter-spacing: 0.1em;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-horror:hover {
+  background: linear-gradient(135deg, #2d0000, #4a0000);
+  box-shadow: 0 0 15px rgba(139, 0, 0, 0.5), inset 0 0 10px rgba(139, 0, 0, 0.2);
+  color: #fff;
+  border-color: var(--blood-bright);
+}
+
+/* Hospital tile pattern */
+.hospital-floor {
+  background-color: #0d1a0d;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Scratched wall texture */
+.wall-texture {
+  background-color: #111;
+  background-image:
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 3px,
+      rgba(255,255,255,0.01) 3px,
+      rgba(255,255,255,0.01) 4px
+    );
+}
+
+/* Glowing red border */
+.border-blood-glow {
+  border: 1px solid var(--blood);
+  box-shadow: 0 0 8px rgba(139, 0, 0, 0.4), inset 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Map room styles */
+.room-locked {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  cursor: not-allowed;
+}
+
+.room-available {
+  background: #1a2e1a;
+  border: 1px solid #2a4a2a;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.room-available:hover {
+  background: #203820;
+  box-shadow: 0 0 10px rgba(0, 100, 0, 0.3);
+}
+
+.room-completed {
+  background: #0a1a0a;
+  border: 1px solid #1a3a1a;
+  opacity: 0.7;
+}
+
+.room-danger {
+  background: #2a0a0a;
+  border: 1px solid var(--blood);
+  animation: pulse-red 2s infinite;
+}
+
+/* Puzzle styles */
+.puzzle-cell {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: 'Special Elite', cursive;
+  font-size: 1.2rem;
+  transition: all 0.2s;
+  background: #111;
+  color: #ccc;
+}
+
+.puzzle-cell:hover {
+  background: #1a0000;
+  border-color: var(--blood);
+}
+
+.puzzle-cell.selected {
+  background: #2d0000;
+  border-color: var(--blood-bright);
+  box-shadow: 0 0 8px rgba(204, 0, 0, 0.4);
+}
+
+.puzzle-cell.correct {
+  background: #0a2a0a;
+  border-color: #00aa00;
+  color: #00ff00;
+}
+
+.puzzle-cell.wrong {
+  background: #2a0000;
+  border-color: #aa0000;
+  animation: shake 0.4s ease-in-out;
+}
+
+/* Player indicators */
+.player-1-indicator {
+  color: #ff4444;
+  text-shadow: 0 0 8px rgba(255, 68, 68, 0.5);
+}
+
+.player-2-indicator {
+  color: #4488ff;
+  text-shadow: 0 0 8px rgba(68, 136, 255, 0.5);
+}
+
+/* Horror text input */
+.input-horror {
+  background: #0d0d0d;
+  border: 1px solid #333;
+  color: #ccc;
+  font-family: 'Special Elite', cursive;
+}
+
+.input-horror:focus {
+  border-color: var(--blood);
+  box-shadow: 0 0 8px rgba(139, 0, 0, 0.3);
+  outline: none;
+}
+
+/* Progress bar horror */
+.progress-horror {
+  background: #1a0000;
+  border: 1px solid var(--blood);
+}
+
+.progress-horror-fill {
+  background: linear-gradient(90deg, #4a0000, var(--blood-bright));
+  box-shadow: 0 0 8px rgba(204, 0, 0, 0.5);
+  transition: width 0.5s ease;
+}
+
+/* Noise texture overlay */
+.noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Scrollbar horror */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--blood);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--blood-bright);
 }
